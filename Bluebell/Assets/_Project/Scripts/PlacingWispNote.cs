@@ -3,16 +3,20 @@ using System.Collections;
 
 public class PlacingWispNote : MonoBehaviour
 {
-    public CraftingManager.Melody m_Melody;
-    
+    private CraftingManager.Melody m_Melody;
+
     private bool m_IsPlacable = true;
 
-    public AudioSource m_Audio;
+    private AudioSource m_Audio;
 
     // Use this for initialization
-    void Init(CraftingManager.Melody melody)
+    public void Init(CraftingManager.Melody melody, Vector2 StumpPos)
     {
         m_Melody = melody;
+        m_Audio = GetComponent<AudioSource>();
+        
+
+        StartCoroutine(MoveToStump_cr(StumpPos));
     }
 
     // Update is called once per frame
@@ -22,10 +26,14 @@ public class PlacingWispNote : MonoBehaviour
     }
 
     // Unloading
-    void Unload()
+    IEnumerator MoveToStump_cr(Vector2 StumpPos)
     {
         // move to stump
-        // attach to crafting manager??
+        transform.position = StumpPos;
+
+        yield return null;
+        // attach to crafting manager
+        CraftingManager.Instance.AddWisp(m_Melody);
         m_IsPlacable = true;
     }
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CollectingWispNote : MonoBehaviour
 {
-    
+
 
     public CraftingManager.Melody m_Melody;
 
@@ -34,13 +34,19 @@ public class CollectingWispNote : MonoBehaviour
     {
         m_IsCollectable = false;
 
-        // play sound
+        // Play sound
         m_Audio.Play();
 
         yield return null;
 
-        // move to player
-        // disappear
         // attach to player script??
+        CollectedWisps.Instance.AddWisp(m_Melody);
+
+        // move to player
+
+        // Disappear
+        yield return new WaitForSeconds(m_Audio.clip.length);
+        Destroy(gameObject);
+
     }
 }
