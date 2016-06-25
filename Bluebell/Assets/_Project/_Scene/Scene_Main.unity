@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd280ff5c8cd05f46843ab6dfea31edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Melody: 0
+  m_Melody: 1
 --- !u!50 &39172751
 Rigidbody2D:
   serializedVersion: 2
