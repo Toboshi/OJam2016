@@ -104,25 +104,36 @@ public class CraftingManager : MonoBehaviour
     // Playing Melody
     public void PlayMelody()
     {
-        StartCoroutine(PlayMelody_cr());
+        StartCoroutine(PlayTopMelody_cr());
+        StartCoroutine(PlayBottomMelody_cr());
     }
 
-    IEnumerator PlayMelody_cr()
+    IEnumerator PlayTopMelody_cr()
     {
         for (int i = 0; i < m_TopBluebells.Length; i++)
         {
             m_TopBluebells[i].Play();
-            m_BottomBluebells[i].Play();
 
-            while (m_TopBluebells[i].IsPlaying() && m_BottomBluebells[i].IsPlaying())
+            while (m_TopBluebells[i].IsPlaying())
             {
                 yield return null;
             }
-
-            yield return null;
         }
 
         CheckSolution();
+    }
+
+    IEnumerator PlayBottomMelody_cr()
+    {
+        for (int i = 0; i < m_BottomBluebells.Length; i++)
+        {
+            m_BottomBluebells[i].Play();
+
+            while (m_BottomBluebells[i].IsPlaying())
+            {
+                yield return null;
+            }
+        }
     }
 
     bool CheckSolution()

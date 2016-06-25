@@ -11,6 +11,9 @@ public class CollectedWisps : MonoBehaviour
     public GameObject m_Wisp;
     public AudioClip[] m_Clips;
 
+    public GameObject[] m_WispStumpPosition;
+    private int m_CollectedWisp = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -31,13 +34,19 @@ public class CollectedWisps : MonoBehaviour
         m_CollectedMelodies.Add(melody);
     }
 
-    public void Unload(Vector2 position)
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Stump")
+            Unload();
+    }
+
+    public void Unload()
     {
         foreach(CraftingManager.Melody m in m_CollectedMelodies)
         {
             GameObject g = GameObject.Instantiate(m_Wisp);
             g.AddComponent<AudioSource>().clip = m_Clips[(int)m];
-            g.GetComponent<PlacingWispNote>().Init(m, position);
+            g.GetComponent<PlacingWispNote>().Init(m, m_WispStumpPosition[m_CollectedWisp++].transform.position);
         }
 
         m_CollectedMelodies.Clear();

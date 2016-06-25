@@ -16,5 +16,10 @@ public class Movement : MonoBehaviour
     void Update()
     {
         this.transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * m_Speed;
+        if (Input.GetAxis("Horizontal") < 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        else if (Input.GetAxis("Horizontal") > 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+
     }
 }

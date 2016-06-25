@@ -38,20 +38,20 @@ public class Bluebell : MonoBehaviour
     public void Play()
     {
         if (m_Wisp != null)
+        {
             m_Wisp.GetAudio().Play();
+            m_Timer = 1.5f;
+            if (m_CurrentMelody == CraftingManager.Melody.Top1 || m_CurrentMelody == CraftingManager.Melody.Bottom3)
+                m_Timer = 2.25f;
+        }
         else
             m_Timer = 2;
     }
 
     public bool IsPlaying()
     {
-        if(m_Wisp != null)
-            return m_Wisp.GetAudio().isPlaying;
-        else
-        {
-            m_Timer -= Time.deltaTime;
-            return m_Timer > 0;
-        }
+        m_Timer -= Time.deltaTime;
+        return m_Timer > 0;
     }
 
     public bool IsCorrect()
