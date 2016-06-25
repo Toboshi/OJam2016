@@ -32,6 +32,7 @@ public class Bluebell : MonoBehaviour
     public void RemoveWisp()
     {
         m_Wisp = null;
+        m_CurrentMelody = CraftingManager.Melody.NULL;
     }
 
     public void Play()

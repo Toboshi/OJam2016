@@ -118,7 +118,28 @@ public class CraftingManager : MonoBehaviour
             {
                 yield return null;
             }
+
             yield return null;
         }
+
+        CheckSolution();
+    }
+
+    bool CheckSolution()
+    {        
+        for (int i = 0; i < m_TopBluebells.Length; i++)
+        {
+            if (!m_TopBluebells[i].IsCorrect())
+                return false;
+        }
+
+        for (int i = 0; i < m_BottomBluebells.Length; i++)
+        {
+            if (!m_BottomBluebells[i].IsCorrect())
+                return false;
+        }
+
+        Debug.Log("Finish!");
+        return true;
     }
 }
