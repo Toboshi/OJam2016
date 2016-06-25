@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 429544}
   - 212: {fileID: 21277714}
   - 61: {fileID: 6104382}
+  - 95: {fileID: 9564420}
   m_Layer: 0
   m_Name: Rubelle
   m_TagString: Player
@@ -168,6 +169,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181770}
   m_Enabled: 1
+--- !u!95 &9564420
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 80fa9a9d5bf79684f9bda1c78f7deee8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11426010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 5
+  m_Anim: {fileID: 9564420}
 --- !u!114 &11459700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,7 +262,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9a25d56e181673644a42ce9194481625, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 170909e6685174942a4c5227bf7e6ebe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
