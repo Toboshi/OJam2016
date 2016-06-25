@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 
-    public float m_Speed = 0.5f;
+    public float m_Speed = 5f;
 
     // Use this for initialization
     void Start()
@@ -15,6 +15,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * m_Speed;
+        this.transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * m_Speed;
     }
 }

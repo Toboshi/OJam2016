@@ -1,15 +1,57 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CraftingManager : MonoBehaviour {
+public class CraftingManager : MonoBehaviour
+{
+    public static CraftingManager Instance;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public enum Melody
+    {
+        NULL,
+        Top1,
+        Top2,
+        Top3,
+        Top4,
+        Bottom1,
+        Bottom2,
+        Bottom3,
+        Bottom4
+    }
+
+    public Bluebell[] m_TopBluebells;
+    public Bluebell[] m_BottomBluebells;
+
+    private Melody[] m_AvailableMelodies;
+    private int m_AmountMelodies = 0;
+
+    // Use this for initialization
+    void Start()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            return;
+
+        m_AvailableMelodies = new Melody[8];
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void AddWisp(Melody melody)
+    {
+        m_AvailableMelodies[m_AmountMelodies++] = melody;
+    }
+
+    public void PlaceWisp(Melody melody, Vector2 position)
+    {
+        // Find the melody's old position & remove it
+        
+        // Find which bluebell I'm over
+
+        // Place melody there or, no where & return to position
+    }
 }
