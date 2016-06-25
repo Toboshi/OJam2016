@@ -57,6 +57,7 @@ public class CraftingManager : MonoBehaviour
         if (bell == null || bell.m_CurrentMelody != Melody.NULL)
         {
             //AddWisp(melody);
+            wisp.Reset();
         }
         else
         {

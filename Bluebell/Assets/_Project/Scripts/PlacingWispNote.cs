@@ -16,7 +16,7 @@ public class PlacingWispNote : MonoBehaviour
     {
         m_Melody = melody;
         m_Audio = GetComponent<AudioSource>();
-        m_DefaultPos = StumpPos;       
+        m_DefaultPos = StumpPos;
 
         StartCoroutine(MoveToStump_cr());
     }
@@ -52,10 +52,15 @@ public class PlacingWispNote : MonoBehaviour
     // Wiggle
     IEnumerator Wiggle_cr()
     {
-        if(m_IsWiggling)
+        if (m_IsWiggling)
         {
             yield return null;
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = m_DefaultPos;
     }
 
     // Place

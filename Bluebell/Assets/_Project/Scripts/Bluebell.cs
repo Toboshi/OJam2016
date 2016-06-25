@@ -27,6 +27,7 @@ public class Bluebell : MonoBehaviour
     {
         m_Wisp = wisp;
         m_CurrentMelody = m_Wisp.GetMelody();
+        m_Wisp.gameObject.transform.position = transform.position;
     }
 
     public void RemoveWisp()
