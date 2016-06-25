@@ -151,6 +151,7 @@ public class CraftingManager : MonoBehaviour
         }
 
         Debug.Log("Finish!");
+        UIManager.Instance.EndGame();
         return true;
     }
 }
