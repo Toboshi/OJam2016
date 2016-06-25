@@ -5,7 +5,7 @@ public class PlacingWispNote : MonoBehaviour
 {
     private CraftingManager.Melody m_Melody;
 
-    private bool m_IsPlacable = true;
+    private bool m_IsWiggling = false;
 
     private AudioSource m_Audio;
 
@@ -13,8 +13,7 @@ public class PlacingWispNote : MonoBehaviour
     public void Init(CraftingManager.Melody melody, Vector2 StumpPos)
     {
         m_Melody = melody;
-        m_Audio = GetComponent<AudioSource>();
-        
+        m_Audio = GetComponent<AudioSource>();        
 
         StartCoroutine(MoveToStump_cr(StumpPos));
     }
@@ -23,6 +22,16 @@ public class PlacingWispNote : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public CraftingManager.Melody GetMelody()
+    {
+        return m_Melody;
+    }
+
+    public AudioSource GetAudio()
+    {
+        return m_Audio;
     }
 
     // Unloading
@@ -34,18 +43,20 @@ public class PlacingWispNote : MonoBehaviour
         yield return null;
         // attach to crafting manager
         CraftingManager.Instance.AddWisp(m_Melody);
-        m_IsPlacable = true;
+        m_IsWiggling = true;
     }
 
     // Place
     void OnMouseDown()
     {
+        m_IsWiggling = false;
+
         m_Audio.Play();
     }
 
     void OnMouseDrag()
     {
-        if (!m_IsPlacable)
+        if (m_IsWiggling)
             return;
 
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -55,6 +66,6 @@ public class PlacingWispNote : MonoBehaviour
 
     void OnMouseUp()
     {
-        CraftingManager.Instance.PlaceWisp(m_Melody, Input.mousePosition);
+        CraftingManager.Instance.PlaceWisp(this, Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 }

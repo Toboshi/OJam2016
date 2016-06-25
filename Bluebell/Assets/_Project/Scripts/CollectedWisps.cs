@@ -39,5 +39,7 @@ public class CollectedWisps : MonoBehaviour
             g.AddComponent<AudioSource>().clip = m_Clips[(int)m];
             g.GetComponent<PlacingWispNote>().Init(m, position);
         }
+
+        m_CollectedMelodies.Clear();
     }
 }
