@@ -40,7 +40,7 @@ public class CollectedWisps : MonoBehaviour
         {
             Unload();
 
-            FindObjectOfType<ZoomCam>().Activate(other.transform.position + new Vector3(3, 3, -10), 8, 2, Easing.Type.QuadOut, 0.15f);
+            FindObjectOfType<ZoomCam>().Activate(other.transform.position + new Vector3(7, 4.5f, -10), 8.5f, 2, Easing.Type.QuadOut, 0.15f);
         }
     }
 

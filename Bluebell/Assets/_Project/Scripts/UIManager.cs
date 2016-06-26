@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject m_SplashScreenCanvas;
     public Image m_SplashScreen;
+    public Text m_TitleText;
     public GameObject m_Title;
 
     public GameObject m_PauseCanvas;
@@ -73,18 +74,25 @@ public class UIManager : MonoBehaviour
 
     IEnumerator StartGame_cr()
     {
-        Color c = Color.white;
-        c.a = 1;
+        Color white = Color.white;
+        Color title = m_TitleText.color;
+        float a = 1;
 
-        while (c.a > 0)
+        while (a > 0)
         {
-            c.a -= Time.deltaTime / m_TransitionTime;
-            m_SplashScreen.color = c;
+            a -= Time.deltaTime / m_TransitionTime;
+            white.a = a;
+            title.a = a;
+            m_SplashScreen.color = white;
+            m_TitleText.color = title;
             yield return null;
         }
 
-        c.a = 0;
-        m_EndBackground.color = c;
+        a = 0;
+        white.a = a;
+        title.a = a;
+        m_SplashScreen.color = white;
+        m_TitleText.color = title;
 
         yield return null;
 
