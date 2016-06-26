@@ -29,7 +29,6 @@ GameObject:
   - 20: {fileID: 2059850}
   - 92: {fileID: 9295848}
   - 124: {fileID: 12493448}
-  - 81: {fileID: 8133542}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -49,6 +48,7 @@ GameObject:
   - 114: {fileID: 11459700}
   - 61: {fileID: 6194890}
   - 50: {fileID: 5062468}
+  - 81: {fileID: 8112842}
   m_Layer: 0
   m_Name: Prefab_MainCharacter
   m_TagString: Player
@@ -173,12 +173,12 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 3, y: 5}
---- !u!81 &8133542
+--- !u!81 &8112842
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181770}
+  m_GameObject: {fileID: 186382}
   m_Enabled: 1
 --- !u!92 &9295848
 Behaviour:
