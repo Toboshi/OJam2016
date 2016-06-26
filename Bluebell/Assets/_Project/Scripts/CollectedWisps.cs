@@ -37,7 +37,19 @@ public class CollectedWisps : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Stump")
+        {
             Unload();
+
+            FindObjectOfType<ZoomCam>().Activate(other.transform.position + new Vector3(3, 4, -10), 7, 2, Easing.Type.QuadOut);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Stump")
+        {
+            FindObjectOfType<ZoomCam>().Deactivate();
+        }
     }
 
     public void Unload()
