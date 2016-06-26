@@ -39,16 +39,25 @@ public class Movement : MonoBehaviour
             m_Body.gravityScale = 2;
 
         // Animation if you've just started or stopped moving
-        if(input != Vector3.zero && !m_IsMoving)
+        if(input.x != 0 && !m_IsMoving)
         {
             m_IsMoving = true;
             m_Anim.SetTrigger("StartMoving");
         }
-        else if(input == Vector3.zero && m_IsMoving)
+        else if(input.x == 0 && m_IsMoving)
         {
             m_IsMoving = false;
             m_Anim.SetTrigger("StopMoving");
         }
+    }
 
+    void FixedUpdate()
+    {
+        if (m_Body.velocity.y < -12)
+        {
+            Vector2 vel = m_Body.velocity;
+            vel.y = -12;
+            m_Body.velocity = vel;
+        }
     }
 }
