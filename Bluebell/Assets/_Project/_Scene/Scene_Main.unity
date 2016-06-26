@@ -2355,7 +2355,7 @@ GameObject:
   - 4: {fileID: 300920157}
   - 61: {fileID: 300920155}
   - 114: {fileID: 300920154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3075,7 +3075,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411865886}
   - 212: {fileID: 411865887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Exit_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9018,7 +9018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1007511507
 Transform:
   m_ObjectHideFlags: 0
@@ -14209,7 +14209,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1584157107}
   - 212: {fileID: 1584157108}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Exit_DoorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
