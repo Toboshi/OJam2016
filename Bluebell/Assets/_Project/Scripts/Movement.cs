@@ -42,12 +42,14 @@ public class Movement : MonoBehaviour
         if(input.x != 0 && !m_IsMoving)
         {
             m_IsMoving = true;
-            m_Anim.SetTrigger("StartMoving");
+            //m_Anim.SetTrigger("StartMoving");
+            m_Anim.SetBool("IsMoving", true);
         }
         else if(input.x == 0 && m_IsMoving)
         {
             m_IsMoving = false;
-            m_Anim.SetTrigger("StopMoving");
+            //m_Anim.SetTrigger("StopMoving");
+            m_Anim.SetBool("IsMoving", false);
         }
     }
 

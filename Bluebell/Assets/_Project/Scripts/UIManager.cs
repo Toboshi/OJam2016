@@ -13,8 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject m_Title;
 
     public GameObject m_PauseCanvas;
-    public Slider m_GameSound;
-    public Slider m_AmbientSound;
+    public Slider m_Volume;
 
     public GameObject m_EndCanvas;
     public Image m_EndBackground;
@@ -53,6 +52,11 @@ public class UIManager : MonoBehaviour
     {
         m_GamePaused = !m_GamePaused;
         m_PauseCanvas.SetActive(m_GamePaused);
+    }
+
+    public void VolumeSlider()
+    {
+        AudioListener.volume = m_Volume.value;
     }
 
     public void Exit()

@@ -22,17 +22,17 @@ public class CollectingWispNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.End)) StartCoroutine(Collect_cr(Vector3.zero));
+        if (Input.GetKeyDown(KeyCode.End)) StartCoroutine(Collect_cr(transform));
     }
 
     // Collecting
     void OnTriggerEnter2D(Collider2D other)
     {
         if (m_IsCollectable && other.tag == "Player")
-            StartCoroutine(Collect_cr(other.transform.position));
+            StartCoroutine(Collect_cr(other.transform));
     }
 
-    IEnumerator Collect_cr(Vector2 playerPos)
+    IEnumerator Collect_cr(Transform playerPos)
     {
         m_IsCollectable = false;
 
@@ -49,12 +49,12 @@ public class CollectingWispNote : MonoBehaviour
         Vector2 start = transform.position;
         while (t < m_TransitionTime)
         {
-            transform.position = Vector3.Lerp(start, playerPos, t / m_TransitionTime);
+            transform.position = Vector3.Lerp(start, playerPos.position, t / m_TransitionTime);
             t += Time.deltaTime;
             yield return null;
         }
 
-        transform.position = playerPos;
+        transform.position = playerPos.position;
 
         yield return null;
 
