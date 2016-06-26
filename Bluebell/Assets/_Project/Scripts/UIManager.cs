@@ -55,6 +55,11 @@ public class UIManager : MonoBehaviour
         m_PauseCanvas.SetActive(m_GamePaused);
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     public void EndGame()
     {
         m_EndCanvas.SetActive(true);
