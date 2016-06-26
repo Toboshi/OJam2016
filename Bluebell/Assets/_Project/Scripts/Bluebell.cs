@@ -60,6 +60,7 @@ public class Bluebell : MonoBehaviour
     public bool IsPlaying()
     {
         m_Timer -= Time.deltaTime;
+        transform.Rotate(transform.forward * Mathf.Sin(Time.time) / 5);
         return m_Timer > 0;
     }
 
