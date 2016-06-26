@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Bluebell : MonoBehaviour
 {
-    public CraftingManager.Melody m_CorrectMelody;
+    public CraftingManager.Melody m_CorrectMelody1;
+    public CraftingManager.Melody m_CorrectMelody2;
 
     public CraftingManager.Melody m_CurrentMelody;
 
@@ -60,7 +61,7 @@ public class Bluebell : MonoBehaviour
         if (m_Wisp == null)
             return false;
 
-        return m_CorrectMelody == m_CurrentMelody;
+        return m_CorrectMelody1 == m_CurrentMelody || m_CorrectMelody2 == m_CurrentMelody;
     }
 
 }

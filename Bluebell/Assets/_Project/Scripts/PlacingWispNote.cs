@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlacingWispNote : MonoBehaviour
 {
+    public float m_TransitionTime = 1f;
+
     private CraftingManager.Melody m_Melody;
 
     private bool m_IsWiggling = false;
@@ -11,12 +13,15 @@ public class PlacingWispNote : MonoBehaviour
 
     private Vector2 m_DefaultPos;
 
+    private bool m_GoingUp;
+
     // Use this for initialization
     public void Init(CraftingManager.Melody melody, Vector2 StumpPos)
     {
         m_Melody = melody;
         m_Audio = GetComponent<AudioSource>();
         m_DefaultPos = StumpPos;
+        m_GoingUp = UnityEngine.Random.Range(0, 1) == 0 ? false : true;
 
         StartCoroutine(MoveToStump_cr());
     }
@@ -41,26 +46,56 @@ public class PlacingWispNote : MonoBehaviour
     IEnumerator MoveToStump_cr()
     {
         // move to stump
+        float t = 0;
+        Vector2 start = transform.position;
+        while (t < m_TransitionTime)
+        {
+            transform.position = Vector3.Lerp(start, m_DefaultPos, t / m_TransitionTime);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
         transform.position = m_DefaultPos;
 
         yield return null;
         // attach to crafting manager
         CraftingManager.Instance.AddWisp(m_Melody);
         m_IsWiggling = true;
+        StartCoroutine(Wiggle_cr());
     }
 
     // Wiggle
     IEnumerator Wiggle_cr()
     {
-        if (m_IsWiggling)
+        while (m_IsWiggling)
         {
-            yield return null;
+            if(m_GoingUp)
+            {
+                while(transform.position.x < m_DefaultPos.x + 5)
+                {
+                    Debug.Log("Going Up! " + m_GoingUp);
+                    transform.position += Vector3.up * Time.deltaTime;
+                    yield return null;
+                }
+                m_GoingUp = false;
+            }
+            else
+            {
+                while (transform.position.x > m_DefaultPos.x - 5)
+                {
+                    Debug.Log("Going Down! " + m_GoingUp);
+                    transform.position -= Vector3.up * Time.deltaTime;
+                    yield return null;
+                }
+                m_GoingUp = true;
+            }
+            
         }
     }
 
     public void Reset()
     {
-        transform.position = m_DefaultPos;
+        StartCoroutine(MoveToStump_cr());
     }
 
     // Place
