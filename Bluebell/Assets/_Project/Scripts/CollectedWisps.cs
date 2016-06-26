@@ -58,7 +58,7 @@ public class CollectedWisps : MonoBehaviour
         {
             GameObject g = GameObject.Instantiate(m_Wisp);
             g.AddComponent<AudioSource>().clip = m_Clips[(int)m];
-            g.GetComponent<PlacingWispNote>().Init(m, m_WispStumpPosition[m_CollectedWisp++].transform.position);
+            g.GetComponent<PlacingWispNote>().Init(m, this.transform.position, m_WispStumpPosition[m_CollectedWisp++].transform.position);
         }
 
         m_CollectedMelodies.Clear();

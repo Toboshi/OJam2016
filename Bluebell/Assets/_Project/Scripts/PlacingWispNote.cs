@@ -18,11 +18,12 @@ public class PlacingWispNote : MonoBehaviour
     private float m_BobVariant;
 
     // Use this for initialization
-    public void Init(CraftingManager.Melody melody, Vector2 StumpPos)
+    public void Init(CraftingManager.Melody melody, Vector2 currentPos, Vector2 stumpPos)
     {
         m_Melody = melody;
         m_Audio = GetComponent<AudioSource>();
-        m_DefaultPos = StumpPos;
+        transform.position = currentPos;
+        m_DefaultPos = stumpPos;
         m_BobVariant = UnityEngine.Random.Range(-1.0f, 1.0f);
 
         Reset();
