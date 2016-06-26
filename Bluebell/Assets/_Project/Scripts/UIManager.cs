@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     public Image m_EndBackground;
     public GameObject m_EndCredits;
 
+    public Transform m_EndDoor;
+
     private bool m_GamePaused = true;
 
     // Use this for initialization
@@ -83,12 +85,19 @@ public class UIManager : MonoBehaviour
 
     IEnumerator TheEnd_cr()
     {
+        GetComponent<AudioSource>().Play();
+        FindObjectOfType<ZoomCam>().Activate(m_EndDoor.position, 3, 10.5f);
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(moveDoor_cr());
+
         Color c = Color.white;
         c.a = 0;
 
         while(c.a <= 1)
         {
-            c.a += Time.deltaTime / m_TransitionTime;
+            c.a += Time.deltaTime / 9.5f;
             m_EndBackground.color = c;
             yield return null;
         }
@@ -99,5 +108,25 @@ public class UIManager : MonoBehaviour
         yield return null;
 
         m_EndCredits.SetActive(true);
+    }
+
+    IEnumerator moveDoor_cr()
+    {
+        Vector3 start = m_EndDoor.position;
+        Vector3 end = start + Vector3.down * 8;
+
+        float t = 0;
+        float duration = 9.5f;
+
+        while (t < duration)
+        {
+            float val = t / duration;
+            m_EndDoor.position = Easing.Linear(start, end, val);
+            
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        m_EndDoor.position = end;
     }
 }

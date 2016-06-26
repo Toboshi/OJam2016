@@ -22,7 +22,7 @@ public class CollectingWispNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.End)) StartCoroutine(Collect_cr(Vector3.zero));
     }
 
     // Collecting
