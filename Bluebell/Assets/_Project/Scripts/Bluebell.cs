@@ -8,6 +8,11 @@ public class Bluebell : MonoBehaviour
 
     public CraftingManager.Melody m_CurrentMelody;
 
+    public SpriteRenderer m_Renderer;
+
+    public Sprite m_NoLight;
+    public Sprite m_HighLight;
+
     private PlacingWispNote m_Wisp = null;
 
     private float m_Timer = 0;
@@ -29,12 +34,14 @@ public class Bluebell : MonoBehaviour
         m_Wisp = wisp;
         m_CurrentMelody = m_Wisp.GetMelody();
         m_Wisp.gameObject.transform.position = transform.position;
+        m_Renderer.sprite = m_HighLight;
     }
 
     public void RemoveWisp()
     {
         m_Wisp = null;
         m_CurrentMelody = CraftingManager.Melody.NULL;
+        m_Renderer.sprite = m_NoLight;
     }
 
     public void Play()

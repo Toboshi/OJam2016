@@ -22,8 +22,6 @@ public class CraftingManager : MonoBehaviour
     public Bluebell[] m_TopBluebells;
     public Bluebell[] m_BottomBluebells;
 
-    //private List<Melody> m_AvailableMelodies = new List<Melody>();
-
     // Use this for initialization
     void Start()
     {
@@ -39,16 +37,11 @@ public class CraftingManager : MonoBehaviour
 
     }
 
-    public void AddWisp(Melody melody)
-    {
-        //m_AvailableMelodies.Add(melody);
-    }
-
     // Placing Wisps
-    public void PlaceWisp(PlacingWispNote wisp, Vector2 position)
+    public bool PlacedWisp(PlacingWispNote wisp, Vector2 position)
     {
         // Find the melody's old position & remove it
-        RemoveWisp(wisp);
+        //RemoveWisp(wisp);
 
         // Find which bluebell I'm over
         Bluebell bell = FindBluebell(position);
@@ -58,18 +51,17 @@ public class CraftingManager : MonoBehaviour
         {
             //AddWisp(melody);
             wisp.Reset();
+            return false;
         }
         else
         {
             bell.AddWisp(wisp);
+            return true;
         }
     }
 
-    void RemoveWisp(PlacingWispNote wisp)
+    public void RemoveWisp(PlacingWispNote wisp)
     {
-        //if (m_AvailableMelodies.Remove(melody))
-        //return;
-
         for (int i = 0; i < m_TopBluebells.Length; i++)
         {
             if (wisp.GetMelody() == m_TopBluebells[i].m_CurrentMelody)
